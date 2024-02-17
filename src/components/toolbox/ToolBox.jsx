@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import parse from "html-react-parser";
 import {
   FaCropAlt,
   FaFolder,
@@ -39,8 +40,25 @@ const ToolBox = () => {
       id: 3,
       title: "Shipping",
       icon: <FaShippingFast />,
-      content: `
-    <table>
+      content: "<h2>this is shipping</h2>",
+    },
+    {
+      id: 4,
+      title: "Delivery",
+      icon: <FaCar />,
+      content: "<h1>this is all delivery</h1>",
+    },
+    {
+      id: 5,
+      title: "Content",
+      icon: <FaCropAlt />,
+      content: "<h1>this is all content</h1>",
+    },
+    {
+      id: 6,
+      title: "Table",
+      icon: <FaTable />,
+      content: parse(`<table>
       <tbody>
         <tr>
           <th>Name</th>
@@ -64,25 +82,7 @@ const ToolBox = () => {
           <td colspan="2">politician</td>
         </tr>
       </tbody>
-    </table>`,
-    },
-    {
-      id: 4,
-      title: "Delivery",
-      icon: <FaCar />,
-      content: "<h1>this is all delivery</h1>",
-    },
-    {
-      id: 5,
-      title: "Content",
-      icon: <FaCropAlt />,
-      content: "<h1>this is all content</h1>",
-    },
-    {
-      id: 6,
-      title: "Table",
-      icon: <FaTable />,
-      content: "<h1>this is all table</h1>",
+    </table>`),
     },
     {
       id: 7,
