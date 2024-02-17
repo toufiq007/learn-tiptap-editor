@@ -20,7 +20,6 @@ import {
 } from "react-icons/fa";
 import { EditorContent, useEditor, BubbleMenu } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import parse from "html-react-parser";
 
 import "./style.scss";
 import { useCallback } from "react";
@@ -57,6 +56,7 @@ const TiptapEditor = () => {
         },
       }),
     ],
+    // default content
     content: `
               <h3 style="text-align:center">
                 Have you seen our tables? They are amazing!
@@ -66,40 +66,6 @@ const TiptapEditor = () => {
                 <li>support for <code>colgroup</code> and <code>rowspan</code></li>
                 <li>and even resizable columns (optional)</li>
               </ul>
-              <p>
-                Here is an example:
-              </p>
-              <table>
-                <tbody>
-                  <tr>
-                    <th>Name</th>
-                    <th colspan="3">Description</th>
-                  </tr>
-                  <tr>
-                    <td>Cyndi Lauper</td>
-                    <td>singer</td>
-                    <td>songwriter</td>
-                    <td>actress</td>
-                  </tr>
-                  <tr>
-                    <td>Marie Curie</td>
-                    <td>scientist</td>
-                    <td>chemist</td>
-                    <td>physicist</td>
-                  </tr>
-                  <tr>
-                    <td>Indira Gandhi</td>
-                    <td>prime minister</td>
-                    <td colspan="2">politician</td>
-                  </tr>
-                </tbody>
-              </table>
-              <p>Try to drag around the image. While you drag, the editor should show a decoration under your cursor. The so called dropcursor.</p>
-            <img src="https://source.unsplash.com/8xznAGy4HcY/800x400" />
-
-            <h2>
-      Hi there,
-    </h2>
     <p>
       this is a <em>basic</em> example of <strong>tiptap</strong>. Sure, there are all kind of basic text styles you’d probably expect from a text editor. But wait until you see the lists:
     </p>
@@ -134,7 +100,6 @@ const TiptapEditor = () => {
           </p>
 
             `,
-    
   });
 
   // all button handlers
@@ -262,7 +227,6 @@ const TiptapEditor = () => {
             </button>
           </BubbleMenu>
         )}
-        {/* <button onClick={addImage}>add image from URL</button> */}
         <EditorContent editor={editor} />
       </div>
     </div>
