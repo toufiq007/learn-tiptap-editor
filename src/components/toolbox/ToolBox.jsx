@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 const ToolBox = ({ toolBoxItems }) => {
-  console.log(toolBoxItems);
   // set data to toolbox
   const handleDragStart = (e, content) => {
     console.log(content);
@@ -27,7 +26,6 @@ const ToolBox = ({ toolBoxItems }) => {
         }}
       >
         {toolBoxItems.map((box, index) => {
-          console.log(box.content);
           return (
             <>
               <div

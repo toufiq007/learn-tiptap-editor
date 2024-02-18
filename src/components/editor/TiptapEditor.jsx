@@ -17,19 +17,115 @@ import {
   FaAlignLeft,
   FaAlignCenter,
   FaAlignRight,
+  FaParagraph,
+  FaShippingFast,
+  FaCar,
+  FaCropAlt,
+  FaTable,
+  FaFolder,
+  FaHeadphones,
+  FaLock,
+  FaPhone,
 } from "react-icons/fa";
 import { EditorContent, useEditor, BubbleMenu } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 
 import "./style.scss";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import Underline from "@tiptap/extension-underline";
+import HeadingContent from "../allToolBoxContents/Heading";
+const toolBoxItems = [
+  {
+    id: 1,
+    title: "Heading",
+    icon: <FaHeading />,
+    content: <HeadingContent />,
+  },
+  {
+    id: 2,
+    title: "Paragrapgh",
+    icon: <FaParagraph />,
+    content: "amar nam paragraph",
+  },
+  {
+    id: 3,
+    title: "Shipping",
+    icon: <FaShippingFast />,
+    content: "<h2>this is shipping</h2>",
+  },
+  {
+    id: 4,
+    title: "Delivery",
+    icon: <FaCar />,
+    content: "<h1>this is all delivery</h1>",
+  },
+  {
+    id: 5,
+    title: "Content",
+    icon: <FaCropAlt />,
+    content: "<h1>this is all content</h1>",
+  },
+  {
+    id: 6,
+    title: "Table",
+    icon: <FaTable />,
+    content: `<table>
+    <tbody>
+      <tr>
+        <th>Name</th>
+        <th colspan="3">Description</th>
+      </tr>
+      <tr>
+        <td>Cyndi Lauper</td>
+        <td>singer</td>
+        <td>songwriter</td>
+        <td>actress</td>
+      </tr>
+      <tr>
+        <td>Marie Curie</td>
+        <td>scientist</td>
+        <td>chemist</td>
+        <td>physicist</td>
+      </tr>
+      <tr>
+        <td>Indira Gandhi</td>
+        <td>prime minister</td>
+        <td colspan="2">politician</td>
+      </tr>
+    </tbody>
+  </table>`,
+  },
+  {
+    id: 7,
+    title: "Drawing",
+    icon: <FaFolder />,
+    content: "<h1>this is all drawing</h1>",
+  },
+  {
+    id: 8,
+    title: "Content",
+    icon: <FaHeadphones />,
+    content: "<h1>this is all another content</h1>",
+  },
 
+  {
+    id: 9,
+    title: "Images",
+    icon: <FaLock />,
+    content: "<h1>this is all images</h1>",
+  },
+  {
+    id: 10,
+    title: "Menus",
+    icon: <FaPhone />,
+    content: "<h1>this is all menus</h1>",
+  },
+];
 const TiptapEditor = () => {
+  const [contentNode, setContentNode] = useState([]);
   const CustomDocument = Document.extend({
     content: "heading block*",
   });
-
   const editor = useEditor({
     extensions: [
       CustomDocument,
@@ -56,51 +152,79 @@ const TiptapEditor = () => {
         },
       }),
     ],
-    // default content
     content: `
-              <h3 style="text-align:center">
-                Have you seen our tables? They are amazing!
-              </h3>
-              <ul>
-                <li>tables with rows, cells and headers (optional)</li>
-                <li>support for <code>colgroup</code> and <code>rowspan</code></li>
-                <li>and even resizable columns (optional)</li>
-              </ul>
-    <p>
-      this is a <em>basic</em> example of <strong>tiptap</strong>. Sure, there are all kind of basic text styles you’d probably expect from a text editor. But wait until you see the lists:
-    </p>
-    <ul>
-      <li>
-        That’s a bullet list with one …
-      </li>
-      <li>
-        … or two list items.
-      </li>
-    </ul>
-    <p>
-      Isn’t that great? And all of that is editable. But wait, there’s more. Let’s try a code block:
-    </p>
-     <pre><code class="language-css">body {
-     display: none;
-     }</code></pre>
-     <p>
-      I know, I know, this is impressive. It’s only the tip of the iceberg though. Give it a try and click a little bit around. Don’t forget to check the other examples too.
-    </p>
-    <blockquote>
-      Wow, that’s amazing. Good work, boy! 👏
-      <br />
-      — Mom
-    </blockquote>
-          <p>
-            … if you pass a custom document. That’s the beauty of having full control over the schema.
-          </p>
+      <h3>
+        Have you seen our tables? They are amazing!
+      </h3>
+      <ul>
+        <li>tables with rows, cells and headers (optional)</li>
+        <li>support for <code>colgroup</code> and <code>rowspan</code></li>
+        <li>and even resizable columns (optional)</li>
+      </ul>
+      <p>
+        Here is an example:
+      </p>
+      <table>
+        <tbody>
+          <tr>
+            <th>Name</th>
+            <th colspan="3">Description</th>
+          </tr>
+          <tr>
+            <td>Cyndi Lauper</td>
+            <td>singer</td>
+            <td>songwriter</td>
+            <td>actress</td>
+          </tr>
+          <tr>
+            <td>Marie Curie</td>
+            <td>scientist</td>
+            <td>chemist</td>
+            <td>physicist</td>
+          </tr>
+          <tr>
+            <td>Indira Gandhi</td>
+            <td>prime minister</td>
+            <td colspan="2">politician</td>
+          </tr>
+        </tbody>
+      </table>
 
-          <p>
 
-          </p>
 
-            `,
+      <p>korem201</p>
+      <p>korem201</p>
+      <p>korem201</p>
+      <p>korem201</p>
+      <p>korem201</p>
+      <p>korem201</p>
+      <p>korem201</p>
+      <p>korem201</p>
+      <p>korem201</p>
+    `,
   });
+
+  // all events
+  const handleDragStart = (e, contentId) => {
+    // const nodeData = e.dataTransfer.setData("text/plain", content);
+    // setContentNode(nodeData);
+    e.dataTransfer.setData("text/plain", contentId.toString());
+  };
+  const handleOnDrag = (e) => {
+    e.preventDefault();
+    // console.log(contentType);
+  };
+
+  const handleDragEnd = (e) => {
+    e.dataTransfer.clearData();
+  };
+
+  const handleOnDragOver = (e) => {
+    // console.log(e.dataTransfer.getData("text/plain"));
+    e.preventDefault();
+    const contentId = e.dataTransfer.getData("text/plain");
+    console.log(contentId);
+  };
 
   // all button handlers
   // const insertHanldeTable = useCallback(() => {
@@ -141,7 +265,7 @@ const TiptapEditor = () => {
   });
 
   return (
-    <div style={{ width: "70%" }}>
+    <div style={{ width: "100%" }}>
       <h2 style={{ margin: "1rem 0", fontSize: "2rem", textAlign: "center" }}>
         Our Editor
       </h2>
@@ -151,6 +275,9 @@ const TiptapEditor = () => {
           height: "85vh",
           overflowY: "auto",
           padding: "2rem",
+          display: "flex",
+          justifyContent: "space-between",
+          gap: "20px",
         }}
       >
         {editor && (
@@ -227,7 +354,55 @@ const TiptapEditor = () => {
             </button>
           </BubbleMenu>
         )}
-        <EditorContent editor={editor} />
+        <div
+          style={{
+            width: "70%",
+            background: "#ededed",
+            height: "85vh",
+            overflowY: "auto",
+          }}
+        >
+          <EditorContent
+            onDragOver={(e) => handleOnDragOver(e)}
+            editor={editor}
+          />
+        </div>
+        <div
+          style={{
+            width: "30%",
+            display: "grid",
+            gridTemplateColumns: "repeat(2,1fr)",
+            gap: "20px",
+          }}
+        >
+          {toolBoxItems &&
+            toolBoxItems.map((box, index) => (
+              <div key={index}>
+                <div
+                  key={index}
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    flexDirection: "column",
+                    height: "150px",
+                    background: "#ededed",
+                    cursor: "move",
+                    borderRadius: "10px",
+                  }}
+                  draggable={true}
+                  onDragStart={(e) => handleDragStart(e, box.id)}
+                  onDragEnd={(e) => handleDragEnd(e)}
+                  onDrag={(e) => handleOnDrag(e)}
+                >
+                  <h4 style={{ fontSize: "2rem", marginBottom: ".5rem" }}>
+                    {box.title}
+                  </h4>
+                  <span style={{ fontSize: "2rem" }}>{box.icon}</span>
+                </div>
+              </div>
+            ))}
+        </div>
       </div>
     </div>
   );
