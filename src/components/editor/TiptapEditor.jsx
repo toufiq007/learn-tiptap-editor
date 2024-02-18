@@ -69,31 +69,7 @@ const toolBoxItems = [
     id: 6,
     title: "Table",
     icon: <FaTable />,
-    content: `<table>
-    <tbody>
-      <tr>
-        <th>Name</th>
-        <th colspan="3">Description</th>
-      </tr>
-      <tr>
-        <td>Cyndi Lauper</td>
-        <td>singer</td>
-        <td>songwriter</td>
-        <td>actress</td>
-      </tr>
-      <tr>
-        <td>Marie Curie</td>
-        <td>scientist</td>
-        <td>chemist</td>
-        <td>physicist</td>
-      </tr>
-      <tr>
-        <td>Indira Gandhi</td>
-        <td>prime minister</td>
-        <td colspan="2">politician</td>
-      </tr>
-    </tbody>
-  </table>`,
+    content: `<h1 style="text-align:center;margin-bottom:1rem">{{Our table content}}</h1><table><tbody><tr><th>Name</th><th colspan="3">Description</th></tr><tr><td>Cyndi Lauper</td><td>singer</td><td>songwriter</td><td>actress</td></tr><tr><td>Marie Curie</td><td>scientist</td><td>chemist</td><td>physicist</td></tr><tr><td>Indira Gandhi</td><td>prime minister</td><td colspan="2">politician</td></tr></tbody></table>`,
   },
   {
     id: 7,
@@ -122,7 +98,6 @@ const toolBoxItems = [
   },
 ];
 const TiptapEditor = () => {
-  const [contentNode, setContentNode] = useState([]);
   const CustomDocument = Document.extend({
     content: "heading block*",
   });
@@ -195,35 +170,24 @@ const TiptapEditor = () => {
       <p>korem201</p>
       <p>korem201</p>
       <p>korem201</p>
-      <p>korem201</p>
-      <p>korem201</p>
-      <p>korem201</p>
-      <p>korem201</p>
-      <p>korem201</p>
-      <p>korem201</p>
     `,
   });
 
   // all events
   const handleDragStart = (e, contentId) => {
-    // const nodeData = e.dataTransfer.setData("text/plain", content);
-    // setContentNode(nodeData);
     e.dataTransfer.setData("text/plain", contentId.toString());
   };
   const handleOnDrag = (e) => {
-    e.preventDefault();
-    // console.log(contentType);
+    e.preventDefault()
+    const contentId = e.dataTransfer.getData("text/plain");
+    const boxContent = toolBoxItems.find((box) => box.id === Number(contentId));
+    editor.commands.insertContent(boxContent?.content);
   };
-
   const handleDragEnd = (e) => {
     e.dataTransfer.clearData();
   };
-
   const handleOnDragOver = (e) => {
-    // console.log(e.dataTransfer.getData("text/plain"));
     e.preventDefault();
-    const contentId = e.dataTransfer.getData("text/plain");
-    console.log(contentId);
   };
 
   // all button handlers
@@ -363,6 +327,7 @@ const TiptapEditor = () => {
           }}
         >
           <EditorContent
+            onDrop={(e) => handleOnDrag(e)}
             onDragOver={(e) => handleOnDragOver(e)}
             editor={editor}
           />
