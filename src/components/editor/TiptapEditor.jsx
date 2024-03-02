@@ -7,7 +7,6 @@ import Image from "@tiptap/extension-image";
 import TextAlign from "@tiptap/extension-text-align";
 import Document from "@tiptap/extension-document";
 import Placeholder from "@tiptap/extension-placeholder";
-
 import { EditorContent, useEditor, BubbleMenu } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 
@@ -57,6 +56,7 @@ const TiptapEditor = () => {
     e.preventDefault();
     const contentId = e.dataTransfer.getData("text/plain");
     const boxContent = toolBoxItems.find((box) => box.id === Number(contentId));
+    console.log(boxContent);
     editor.commands.insertContent(boxContent?.content);
   };
   const handleDragEnd = (e) => {
@@ -65,17 +65,6 @@ const TiptapEditor = () => {
   const handleOnDragOver = (e) => {
     e.preventDefault();
   };
-
-  // all button handlers
-  // const insertHanldeTable = useCallback(() => {
-  //   editor
-  //     .chain()
-  //     .focus()
-  //     .insertTable({ rows: 3, cols: 3, withHeaderRow: true })
-  //     .run();
-  // });
-  
-
   return (
     <div style={{ width: "100%" }}>
       <h2 style={{ margin: "1rem 0", fontSize: "2rem", textAlign: "center" }}>
@@ -92,9 +81,7 @@ const TiptapEditor = () => {
           gap: "20px",
         }}
       >
-        {editor && (
-          <Bubblesmenu editor={editor} BubbleMenu={BubbleMenu} />
-        )}
+        {editor && <Bubblesmenu editor={editor} BubbleMenu={BubbleMenu} />}
         <div
           style={{
             width: "70%",

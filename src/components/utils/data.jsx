@@ -4,26 +4,29 @@ import {
   FaFolder,
   FaHeading,
   FaHeadphones,
+  FaList,
   FaLock,
   FaParagraph,
-  FaPhone,
   FaShippingFast,
   FaTable,
 } from "react-icons/fa";
 import HeadingContent from "../allToolBoxContents/Heading";
+import Paragraph from "../allToolBoxContents/paragraph";
+import Table from "../allToolBoxContents/table";
+import ListItem from "../allToolBoxContents/listItems";
 
 export const toolBoxItems = [
   {
     id: 1,
     title: "Heading",
     icon: <FaHeading />,
-    content: <HeadingContent />,
+    content: HeadingContent(),
   },
   {
     id: 2,
     title: "Paragrapgh",
     icon: <FaParagraph />,
-    content: "amar nam paragraph",
+    content: Paragraph(),
   },
   {
     id: 3,
@@ -47,7 +50,7 @@ export const toolBoxItems = [
     id: 6,
     title: "Table",
     icon: <FaTable />,
-    content: `<h1 style="text-align:center;margin-bottom:1rem">{{Our table content}}</h1><table><tbody><tr><th>Name</th><th colspan="3">Description</th></tr><tr><td>Cyndi Lauper</td><td>singer</td><td>songwriter</td><td>actress</td></tr><tr><td>Marie Curie</td><td>scientist</td><td>chemist</td><td>physicist</td></tr><tr><td>Indira Gandhi</td><td>prime minister</td><td colspan="2">politician</td></tr></tbody></table>`,
+    content: Table(),
   },
   {
     id: 7,
@@ -70,8 +73,8 @@ export const toolBoxItems = [
   },
   {
     id: 10,
-    title: "Menus",
-    icon: <FaPhone />,
-    content: "<h1>this is all menus</h1>",
+    title: "Ul",
+    icon: <FaList />,
+    content: ListItem(),
   },
 ];
