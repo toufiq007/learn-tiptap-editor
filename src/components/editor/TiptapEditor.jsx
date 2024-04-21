@@ -9,6 +9,7 @@ import Document from "@tiptap/extension-document";
 import Placeholder from "@tiptap/extension-placeholder";
 import { EditorContent, useEditor, BubbleMenu } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
+import Highlight from '@tiptap/extension-highlight'
 
 import "./style.scss";
 import Underline from "@tiptap/extension-underline";
@@ -44,6 +45,7 @@ const TiptapEditor = () => {
           return "Can you add some further context?";
         },
       }),
+      Highlight.configure({ multicolor: true })
     ],
     content: ``,
   });
