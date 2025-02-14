@@ -68,14 +68,11 @@ const TiptapEditor = () => {
     e.preventDefault();
   };
   return (
-    <div style={{ width: "100%" }}>
-      <h2 style={{ margin: "1rem 0", fontSize: "2rem", textAlign: "center" }}>
-        Our Editor
-      </h2>
+    <div>
       <div
         style={{
           border: "2px solid #ededed",
-          height: "85vh",
+          height: "calc(100vh - 68px)",
           overflowY: "auto",
           padding: "2rem",
           display: "flex",
@@ -87,9 +84,7 @@ const TiptapEditor = () => {
         <div
           style={{
             width: "70%",
-            background: "#ededed",
-            height: "85vh",
-            overflowY: "auto",
+            background: "var(--editorBackground)",
           }}
         >
           <EditorContent
@@ -104,6 +99,8 @@ const TiptapEditor = () => {
             display: "grid",
             gridTemplateColumns: "repeat(2,1fr)",
             gap: "20px",
+            overflow:"auto",
+            // padding:"20px"
           }}
         >
           {toolBoxItems &&
@@ -117,7 +114,7 @@ const TiptapEditor = () => {
                     alignItems: "center",
                     flexDirection: "column",
                     height: "150px",
-                    background: "#ededed",
+                    background: "var(--toolBoxBackground)",
                     cursor: "move",
                     borderRadius: "10px",
                   }}
