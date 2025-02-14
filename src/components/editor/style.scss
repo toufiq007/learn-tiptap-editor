@@ -66,9 +66,13 @@
 .ProseMirror {
   height: 85vh;
   margin: 0;
+  padding: 1rem;
 }
 /* Table-specific styling */
 .tiptap {
+  p{
+    color: red($color: #000000);
+  }
   table {
     border-collapse: collapse;
     table-layout: fixed;
@@ -88,6 +92,7 @@
       > * {
         margin-bottom: 0;
       }
+     
     }
 
     th {

@@ -85,6 +85,8 @@ const TiptapEditor = () => {
           style={{
             width: "70%",
             background: "var(--editorBackground)",
+            height:"calc(100vh - 130px)",
+            overflow:"auto"
           }}
         >
           <EditorContent
