@@ -1,0 +1,21 @@
+
+.navbarContainer {
+    background: var(--navbarColor);
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.navbarStyles{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+    
+}
+.navbarButtons{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
