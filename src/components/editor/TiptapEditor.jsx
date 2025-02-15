@@ -7,14 +7,14 @@ import Image from "@tiptap/extension-image";
 import TextAlign from "@tiptap/extension-text-align";
 import Document from "@tiptap/extension-document";
 import Placeholder from "@tiptap/extension-placeholder";
-import { EditorContent, useEditor, BubbleMenu } from "@tiptap/react";
+import { BubbleMenu, EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import Highlight from '@tiptap/extension-highlight'
+import Highlight from "@tiptap/extension-highlight";
 
 import "./style.scss";
 import Underline from "@tiptap/extension-underline";
 import { toolBoxItems } from "../utils/data";
-import Bubblesmenu from "./Bubblesmenu";
+import CustomBubbleMenu from "./Bubblesmenu";
 
 const TiptapEditor = () => {
   const CustomDocument = Document.extend({
@@ -45,7 +45,7 @@ const TiptapEditor = () => {
           return "Can you add some further context?";
         },
       }),
-      Highlight.configure({ multicolor: true })
+      Highlight.configure({ multicolor: true }),
     ],
     content: ``,
   });
@@ -80,13 +80,12 @@ const TiptapEditor = () => {
           gap: "20px",
         }}
       >
-        {editor && <Bubblesmenu editor={editor} BubbleMenu={BubbleMenu} />}
+        {editor && <CustomBubbleMenu editor={editor} BubbleMenu={BubbleMenu} />}
         <div
           style={{
             width: "70%",
             background: "var(--editorBackground)",
-            height:"calc(100vh - 130px)",
-            overflow:"auto"
+            height: "calc(100vh - 135px)",
           }}
         >
           <EditorContent
@@ -97,12 +96,12 @@ const TiptapEditor = () => {
         </div>
         <div
           style={{
-            width: "30%",
+            width: "400px",
             display: "grid",
             gridTemplateColumns: "repeat(2,1fr)",
-            gap: "20px",
-            overflow:"auto",
-            // padding:"20px"
+            gap: "10px",
+            overflow: "auto",
+            padding: "0 15px",
           }}
         >
           {toolBoxItems &&
@@ -125,10 +124,10 @@ const TiptapEditor = () => {
                   onDragEnd={(e) => handleDragEnd(e)}
                   onDrag={(e) => handleOnDrag(e)}
                 >
-                  <h4 style={{ fontSize: "2rem", marginBottom: ".5rem" }}>
+                  <h4 style={{ fontSize: "1rem", marginBottom: ".5rem" }}>
                     {box.title}
                   </h4>
-                  <span style={{ fontSize: "2rem" }}>{box.icon}</span>
+                  <span style={{ fontSize: "1.5rem" }}>{box.icon}</span>
                 </div>
               </div>
             ))}

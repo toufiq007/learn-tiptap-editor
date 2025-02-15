@@ -173,7 +173,6 @@
   overflow: auto;
   margin: 0;
   padding: 1rem;
-  border-radius: 10px;
 }
 
 // menu styles
@@ -182,6 +181,10 @@
   background-color: #0d0d0d;
   padding: 0.2rem;
   border-radius: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 500px;
 
   button {
     border: none;

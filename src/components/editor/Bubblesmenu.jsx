@@ -14,7 +14,7 @@ import {
   FaFillDrip,
 } from "react-icons/fa";
 
-const Bubblesmenu = ({ editor, BubbleMenu }) => {
+const CustomBubbleMenu = ({ editor, BubbleMenu }) => {
   // bubble menu handler
   const bubbleBoldMenuHanlder = useCallback(() => {
     editor.chain().focus().toggleBold().run();
@@ -99,26 +99,20 @@ const Bubblesmenu = ({ editor, BubbleMenu }) => {
         >
           <FaAlignLeft />
         </button>
-        {/* <button
+        <button
           onClick={bubbleMenuCenterHandler}
           className={
             editor.isActive({ textAlign: "center" }) ? "is-active" : ""
           }
         >
           <FaAlignCenter />
-        </button> */}
-        {/* <button
+        </button>
+        <button
           onClick={bubbleMenuRightHandler}
           className={editor.isActive({ textAlign: "right" }) ? "is-active" : ""}
         >
           <FaAlignRight />
-        </button> */}
-        {/* <button
-          onClick={bubbleMenuRightHandler}
-          className={editor.isActive({ textAlign: "right" }) ? "is-active" : ""}
-        >
-         limon
-        </button> */}
+        </button>
         <button
           onClick={() => editor.chain().focus().toggleHighlight().run()}
           className={editor.isActive("highlight") ? "is-active" : ""}
@@ -130,4 +124,4 @@ const Bubblesmenu = ({ editor, BubbleMenu }) => {
   );
 };
 
-export default Bubblesmenu;
+export default CustomBubbleMenu;
